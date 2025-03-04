@@ -1,14 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_characters"
+        android:id="@+id/navigation_characters"
         android:icon="@drawable/ic_characters"
         android:title="@string/characters" />
     <item
-        android:id="@+id/nav_worlds"
+        android:id="@+id/navigation_worlds"
         android:icon="@drawable/ic_world"
         android:title="@string/worlds" />
     <item
-        android:id="@+id/nav_collectibles"
+        android:id="@+id/navigation_collectibles"
         android:icon="@drawable/ic_collectibles"
         android:title="@string/collectibles" />
 </menu>

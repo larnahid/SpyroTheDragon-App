@@ -1,13 +1,17 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="Theme.SpyroTheDragon" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <!-- Base application theme sin ActionBar -->
+    <style name="Theme.SpyroTheDragon" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/purple</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <item name="android:windowBackground">@drawable/background</item>
 
+        <!-- Desactivar la ActionBar del sistema -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <!-- Configuración de la pantalla de carga (splash) -->
         <item name="android:windowSplashScreenBackground">@color/purple</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash</item>
-
     </style>
 </resources>

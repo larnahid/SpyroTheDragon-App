@@ -2,9 +2,18 @@
 <resources>
     <color name="pink">#c55e97</color>
     <color name="purple">#9c35ba</color>
-    <color name="orange">#e7a56e</color>
+
     <color name="yellow">#fbdf6a</color>
     <color name="yellow2">#88ffffff</color>
     <color name="white">#ffffff</color>
-    <color name="black">#000000</color>
+
+    <color name="white_transparent">#77ffffff</color>
+    <color name="colorwhite">#FFFFFF</color>
+    <color name="_4e4626">#4E4626</color>
+    <color name="purple_transparente">#776621D7</color>
+    <color name="blue">#4aa4c1</color>
+    <color name="purple_700">#512DA8</color>
+    <color name="menuTextColor">#FFFFFF</color> <!-- O el color que quieras -->
+
+
 </resources>

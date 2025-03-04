@@ -1,5 +1,8 @@
 package dam.pmdm.spyrothedragon.adapters;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +15,14 @@ import java.util.List;
 
 import dam.pmdm.spyrothedragon.R;
 import dam.pmdm.spyrothedragon.models.Collectible;
+import dam.pmdm.spyrothedragon.VideoActivity;
 
 public class CollectiblesAdapter extends RecyclerView.Adapter<CollectiblesAdapter.CollectiblesViewHolder> {
 
     private List<Collectible> list;
+    private int gemClickCount = 0;
+    private static final int CLICK_THRESHOLD = 4;
+    private static final long CLICK_RESET_TIME = 2000;
 
     public CollectiblesAdapter(List<Collectible> collectibleList) {
         this.list = collectibleList;
@@ -32,9 +39,28 @@ public class CollectiblesAdapter extends RecyclerView.Adapter<CollectiblesAdapte
         Collectible collectible = list.get(position);
         holder.nameTextView.setText(collectible.getName());
 
-        // Cargar la imagen (simulado con un recurso drawable)
+        // Cargar la imagen
         int imageResId = holder.itemView.getContext().getResources().getIdentifier(collectible.getImage(), "drawable", holder.itemView.getContext().getPackageName());
         holder.imageImageView.setImageResource(imageResId);
+
+        if (collectible.getName().equalsIgnoreCase("Gemas")) {
+            holder.itemView.setOnClickListener(v -> {
+                gemClickCount++;
+
+                if (gemClickCount == CLICK_THRESHOLD) {
+
+                    gemClickCount = 0;
+
+
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, VideoActivity.class);
+                    context.startActivity(intent);
+                }
+
+
+                new Handler().postDelayed(() -> gemClickCount = 0, CLICK_RESET_TIME);
+            });
+        }
     }
 
     @Override

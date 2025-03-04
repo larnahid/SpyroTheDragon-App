@@ -22,28 +22,33 @@ import dam.pmdm.spyrothedragon.models.Character;
 import dam.pmdm.spyrothedragon.adapters.CharactersAdapter;
 import dam.pmdm.spyrothedragon.databinding.FragmentCharactersBinding;
 
-
 public class CharactersFragment extends Fragment {
 
     private FragmentCharactersBinding binding;
-
     private RecyclerView recyclerView;
     private CharactersAdapter adapter;
     private List<Character> charactersList;
+    private FireAnimationView fireAnimationView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentCharactersBinding.inflate(inflater, container, false);
+
+        // Se obtiene la referencia a la vista de la animación de fuego
+        fireAnimationView = binding.getRoot().findViewById(R.id.fireAnimation);
+
         // Inicializamos el RecyclerView y el adaptador
         recyclerView = binding.recyclerViewCharacters;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         charactersList = new ArrayList<>();
-        adapter = new CharactersAdapter(charactersList);
+
+        adapter = new CharactersAdapter(charactersList, fireAnimationView);
         recyclerView.setAdapter(adapter);
 
         // Cargamos los personajes desde el XML
         loadCharacters();
+
         return binding.getRoot();
     }
 
@@ -55,7 +60,7 @@ public class CharactersFragment extends Fragment {
 
     private void loadCharacters() {
         try {
-            // Cargamos el archivo XML desde res/xml (NOTA: ahora se usa R.xml.characters)
+            // Cargamos el archivo XML desde res/xml
             InputStream inputStream = getResources().openRawResource(R.raw.characters);
 
             // Crear un parser XML

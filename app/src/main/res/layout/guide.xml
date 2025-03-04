@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_transparente"
+    android:alpha="0.9"
+    android:clickable="true"
+    android:focusable="true"
+    android:fitsSystemWindows="true"
+    android:id="@+id/guideLayout">
+
+    <LinearLayout
+        android:id="@+id/pantallaBienvenida"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/textHomeGuia1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bienvenido"
+            android:layout_margin="40dp"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/textHomeGuia2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textStep1"
+            android:padding="20dp"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+
+        <ImageView
+            android:id="@+id/logoSpyro"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo_spyro"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textHomeGuia3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textStep2"
+            android:textSize="22sp"
+            android:padding="20dp"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/textHomeGuia4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textStep3"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/textHomeGuia5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textStep4"
+            android:textSize="22sp"
+            android:padding="20dp"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+
+        <ImageView
+            android:id="@+id/spyro_flying"
+            android:src="@drawable/spyro"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/diamante"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:src="@drawable/gems"/>
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/comenzar"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:background="@android:color/transparent"
+                android:backgroundTint="@android:color/transparent"
+                android:layout_gravity="center"
+                android:padding="8dp"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/guideStepsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <!-- Imagen de referencia movible -->
+        <ImageView
+            android:id="@+id/arrowGuide"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/arrow_guide"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+        <FrameLayout
+            android:id="@+id/bocadilloContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/button_normal"
+            android:elevation="8dp">
+
+            <TextView
+                android:id="@+id/textStep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:maxLines="5"
+                android:padding="20dp"
+                android:text="Aquí puedes ver todos los personajes de Spyro."/>
+        </FrameLayout>
+
+        <!-- Botón siguiente -->
+        <Button
+            android:id="@+id/btnNextStep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Siguiente"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <!-- 🔥 Botón "Saltar guía" alineado en la parte inferior derecha -->
+    <Button
+        android:id="@+id/exit_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saltar guía"
+        android:textSize="16sp"
+        android:background="@android:color/transparent"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="30dp"
+        android:padding="12dp"/>
+</FrameLayout>

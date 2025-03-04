@@ -1,5 +1,6 @@
 package dam.pmdm.spyrothedragon.adapters;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import dam.pmdm.spyrothedragon.R;
 import dam.pmdm.spyrothedragon.models.Character;
+import dam.pmdm.spyrothedragon.ui.FireAnimationView;
 
 import java.util.List;
 
 public class CharactersAdapter extends RecyclerView.Adapter<CharactersAdapter.CharactersViewHolder> {
 
     private List<Character> list;
+    private FireAnimationView fireAnimationView;
 
-    public CharactersAdapter(List<Character> charactersList) {
+    public CharactersAdapter(List<Character> charactersList, FireAnimationView fireView) {
         this.list = charactersList;
+        this.fireAnimationView = fireView;
     }
 
     @Override
@@ -32,9 +36,27 @@ public class CharactersAdapter extends RecyclerView.Adapter<CharactersAdapter.Ch
         Character character = list.get(position);
         holder.nameTextView.setText(character.getName());
 
-        // Cargar la imagen (simulado con un recurso drawable)
-        int imageResId = holder.itemView.getContext().getResources().getIdentifier(character.getImage(), "drawable", holder.itemView.getContext().getPackageName());
+        int imageResId = holder.itemView.getContext().getResources()
+                .getIdentifier(character.getImage(), "drawable", holder.itemView.getContext().getPackageName());
         holder.imageImageView.setImageResource(imageResId);
+
+
+        if ("Spyro".equals(character.getName())) {
+            holder.itemView.setOnLongClickListener(v -> {
+                if (fireAnimationView != null) {
+
+                    fireAnimationView.setVisibility(View.VISIBLE);
+                    fireAnimationView.setTranslationX(holder.imageImageView.getX() - holder.imageImageView.getWidth()/3);
+                    fireAnimationView.setTranslationY(holder.imageImageView.getY() - holder.imageImageView.getHeight()*2);
+
+                    fireAnimationView.setRotation(90);
+
+                    fireAnimationView.startFireAnimation();
+                    new Handler().postDelayed(() -> fireAnimationView.setVisibility(View.GONE), 1500);
+                }
+                return true;
+            });
+        }
     }
 
     @Override
